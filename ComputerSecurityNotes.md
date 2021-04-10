@@ -3,10 +3,22 @@
 ## Introduction
 ### Main Security Properties
 
-- **Confidentiality**: Information can only be accessed by authorized individuals
-- **Authenticity**: Certainty that accessed/ received information is actually from the entity we believe it to be from
-- **Integrity**: Data is untampered and uncorrupted
-- **Availability**: Both the data and the system that provide access to it are there when you need them
+- **Confidentiality**: Information can only be accessed by authorized individuals. Tools used to enforce confidentiality include:
+    - Encryption
+    - Access control
+    - Authentication (the determination of the identity or role that someone has)
+    - Authorization (the determination if a person or system is allowed access to resources)
+    - Physical Security (the establishment of physical barriers to limit access to protected computational resources)
+- **Integrity**: Data is *untampered*  (information has been changed) and *uncorrupted* (function that uses the data produces a false result). Tools designed to support data integrity include:
+    - Backups (the periodic archiving of data)
+    - Checksums (the computation of a function that maps the content of a file to a numerical value)
+    - Data correcting codes (methods for storing data in such a way that small changes can be easily detected and automatically corrected)
+- **Availability**: Both the data and the system that provide access to it are there when you need them. Availability can be provided by the following means:
+    - Physical protections (infrastructures meant to keep information available, even in the event of physical challenges)
+    - Computational redundancy (computers and storage devices that serve as fallbacls in the case of failures)
+
+Another important security property is **Authenticity**: the certainty that accessed/ received information is actually from the entity we believe it to be from
+- a protocol that achieves such types of authenticity demonstrates nonrepudiation (the property that authentic statements issued by some person or system cannot be denied)
 
 ### Threat Modeling
 Threat modelling attempts to define who the adversary is and what they are trying to do. The following questions should be answered:
@@ -32,15 +44,33 @@ Threat modelling attempts to define who the adversary is and what they are tryin
 - **Attack**: An action that exploits a vulnerability to carry out a threat (e.g. hacking the company public facing email server)
 - **Controls**: Mitigating or removing a vulnerability
 
+### What is Privacy?
+- Concerns individuals and their expectations on how their data, behaviors, and interactions are recorded, utilized, and spread
+- A useful definition: "Information self-determination"
+    - A person gets to control information about themselves
+    - Controls can include:
+        - Who gets to see it
+        - Who gets to use it
+        - What they can use it for
+        - Who they can give it to
+
+### What is Trust?
+Generally, we trust when we have:
+- **Assurance**: The *means to know* that the system is secure
+- **Reliability/ Resilience**: To *operate intact* in the face of natural disasters and human-launched attacks
+- **Accountability** : The *means to verify* that the system is operating as designed (i.e. securely)
+
+**There is a difference between *trustworthy* and *trusted***
+
 ### Security Principles
 - **Economy of mechanism**: a mechanism should be easy to understand, verify and maintain
 - **Fail-safe defaults**: conservative permissions and functionality
 - **Complete mediation**: every access should be checked (again)
-- **Open design**: No *security by obscurity*
+- **Open design**: No *security by obscurity*. Security should rely only on keeping cryptographic keys secret. Open design allows for a system to be scrutinized by multiple parties, which leads to the early discovery and correction of security vulnerabilities caused by design errors.
 - **Separation of privilege**: cooperation required to act, no single point of failure
 - **Least privilege**: programs and users are granted the bare minimum of access
 - **Least common mechanism**: minimize the shared means of access to resources
-- **Psychological acceptability**: well-designed UI that is intuitive and clea
+- **Psychological acceptability**: well-designed UI that is intuitive and clean. All security-related settings should adhere to what an ordinary user might expect.
 - **Work factor**: comparable effort for the value of the resource
 - **Compromise recording**: record failures and breaches
 
@@ -72,3 +102,21 @@ Privavy means potentially hiding information; can the system be assured to be sa
     - *Attack trees* and *threat modelling* can be useful tools
 - Cost-benefit analysis:
     - Economic incentives: do not spend more on protecting an asset than it is worth.
+
+### Failure of Trust: CA Domain Control Validation
+![CA Domain Control Validation](CA_Domain_Control_Validation.png)
+#### BGP Certificate Authority Attacks
+1. Adversary announces more specific route to victim domain
+2. Intercepts Domain Control Validation message
+3. Responds (before the real destination)
+4. Gets the certificate issued for victim domain using the private key controlled by adversary  
+
+This is depicted below:
+![BGPS Certificate Authority Attacks](BGP_Certificate_Authority_attack.png)
+
+## Network Security: Network Principles
+### Network Communication
+- Communication in modern networks is characterized by the following fundamental principles:
+    - Packet switching
+    - Stack of layers
+    - Encapsulation
