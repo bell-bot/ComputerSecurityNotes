@@ -199,11 +199,25 @@ Internet Packet Encapsulation:
 
 ![Switch vs. Hub](switch.png)
 
+p.230-231  
+<span style="color:blue">What is a hub? How is it different from a switch?</span>  
+->  
+
+<span style="color:blue">What are disadvantages of hubs?</span>  
+->
+
+<span style="color:blue">What are some of the advantages of switches?</span>  
+->
+
 #### Combining Switches
 - Switches can be arranged into a **tree**
     - Each forwards frames for the MAC addresses of the machines in the segments (subtrees) connected to it
     - Frames to unknown MAC addresses are broadcast
     - Frames to MAC addresses in the same segments as the sender are ignored
+
+<span style="color:blue">How do switch trees work? Why are frames to MAC addresses in the same segments as the sender ignored?</span>  
+->
+
 
 **The Internet**
 ![The Internet](the_internet.png)
@@ -231,6 +245,12 @@ Internet Packet Encapsulation:
     - Transport layer protocol information (e.g. TCP)
 ![IP address and packet structure](fragmentation2.png)
 
+p.236-237
+
+<span style="color:blue">In which layer is IP used? What is it used for?</span>
+
+-
+
 ### IP Routing
 - A **router** bridges two or more networks
     - Operates at the network layer
@@ -246,13 +266,29 @@ Routing Example:
     - simple messages encapsulated in single IP packets
     - Considered a network layer protocol
 - Tools based on ICMP:
-    - **Ping**: sends a series of echo request messages and provides statistics on roundtrip times and packet loss
+    - **Ping**: sends a series of echo request messages and provides statistics on roundtrip times and packet loss. Verifies if a particular host is receiving messages
     - **Traceroute**: sends series ICMP packets with increasing TTL value to discover routes
+
+p.240-241
+
+<span style="color:blue">Which layer does the ICMP protocol "belong" to? What are its primary functions?</span>  
+->
+
+<span style="color:blue">ICMP packets carry various types of messages. What are these types of messages and what is their purpose?</span>  
+
+- 
+- 
+- 
+-
 
 ![Traceroute Example](traceroute.png)
 
 ### Network Attacks
 ![Network Attacks](network_attacks.png)
+Wiretapping (sniffing): Someone other than the intended destination is also receiving the information
+Wiretapping (passive): An adversary introduces themselves in the path to the destination (that was not the intended path)
+Tampering (active): Information sent by the source, some intermediate node on the path to the destination changes the information
+Creation (spoofing): Source never actually sends data, some other source creates information and sends it to the destination, changing the header information so that it looks as if it was sent by the source
 
 ### Network Topology
 - **Network Topology**: A network's connection structure
@@ -271,11 +307,35 @@ Routing Example:
     - **MAC** addresses (*data link layer*)
         - Used by low-level protocols
 
+p.232-237
+
+<span style="color:blue">In which layer are MAC addresses used? What are they used for?</span>  
+
+-
+
 ### Address Resolution Protocol (ARP)
 - Connects the network layer to the data link layer by *mapping IP addresses to MAC addresses*
 - Based on broadcast messages and local caching
-- Does not support confidentiality, integrity, or authentication
+- **No built in security**: Does not support confidentiality, integrity, or authentication
 - Defined as part of **RFC 826 (IETF, Reqiest for Comments)**
+
+p.232-237
+
+<span style="color:blue">In which layer is ARP used? What is it used for?</span>
+
+- 
+
+<span style="color:blue">What are the steps of ARP?</span>
+
+-
+
+<span style="color:blue">Describe the process of ARP spoofing. What makes ARP spoofing possible?</span>
+
+- 
+
+<span style="color:blue">What are common defenses agains ARP spoofing?</span>
+
+-
 
 #### ARP Messages
 - ARP broadcasts request of type:
@@ -315,6 +375,16 @@ Routing Example:
     - Large number of packets can be injected into network to launch a *denial-of-service attack*
     - Broadcast addresses provide additional leverage
 
+p.242-243
+
+<span style="color:blue">What is IP spoofing and what makes it possible?</span>
+
+-
+
+<span style="color:blue">How can IP spoofing be prevented?</span>
+
+-
+
 ### User Datagram Protocol
 - UDP is a *stateless, unreliable* datagram protocol built on top of IP, i.e. it is at the **transport layer**
 - Does not provide delivery guarantees or acknowledgements, making it efficient
@@ -333,6 +403,7 @@ Routing Example:
 - TCP generally checks data transmitted by comparing a checksum of the data with a checksum encoded in the packet
 
 ### Ports
+=> This is how we can have many different applications running on the same host
 - TCP (& UPD) supports concurrent applications on the same server
 - Ports are *16 bit numbers* identifying where data is directed
     - e.g. >telnet 192.168.0.1:80; https://example.co.uk:8080
@@ -340,6 +411,15 @@ Routing Example:
 - Ports 0 through 1023 are reserved for *use by known protocols*
     - E.g. HTTPS uses 443 and SSH uses 22
 - Ports 1024 through 49151 are known as user ports, and are used for listening to connections
+
+p.246
+<span style="color:blue">In which layer is TCP used?</span>
+
+-
+
+<span style="color:blue">How does TCP deal with lost packets?</span>
+
+-
 
 ![TCP Packet Format](tcp_packet_format.png)
 
@@ -357,6 +437,10 @@ Routing Example:
 - The server responds by sending a SYN/ACK packet, acknowledging its connection
 - The client responds by sending an ACK to the server, thus establishing connection
 ![TCP Connection Establishment](tcp_connection.png)
+
+<span style="color:blue">How does TCP ensure reliable ordering of future transmissions?</span>
+
+-
 
 ### Syn Flooding
 Send thousands of SYN requests to the victim
@@ -388,10 +472,219 @@ Send thousands of SYN requests to the victim
 - Attack: 
     - Make a forged packet with the victim's IP address as the source
     - Send it to a Smurf amplifier, which then causes a huge number of replies to the victim
-- This is a form of **reflection attack**
+- This is a form of **reflection attack** (i.e. using others devices to attack the victim, as opposed to your own devices)
 
 ![Smurf Attack 1](smurf1.png)
 ![Smurf Attack 2](smurf2.png)
 
 ### Distributed Denial of Service (DDos)
 A large number of machines work together to perform an attack that prevents valid users from accessing the service
+
+p.256-258
+
+<span style="color:blue">Name three types of DOS attacks. How do they work?</span>
+
+-
+
+<span style="color:blue">How can Smurf Attacks be prevented?</span>
+
+-
+
+<span style="color:blue">How can SYN Flood attacks be prevented?</span>
+
+-
+
+### How Networking Impacts Computer Security Goals
+p.227-228
+| Goal                | Impact: Is it achieved? Why? Why not?                                             |
+| ------------------- | --------------------------------------------------------------------------------- |
+| Confidentiality     |                                                                                   |
+| Integrity           |                                                                                   |
+| Availability        |                                                                                   |
+| Assurance           |                                                                                   |
+| Authenticity        |                                                                                   |
+| Anonymity           |                                                                                   |    
+
+p.253
+
+<span style="color:blue">What is the goal of TCP Sequence Prediction and how does it work? Name the steps of an example attack.</span>
+
+-
+
+## Network Security: Application Layer and DNS
+
+### Application Layer Protocols
+
+Here are some of the common application-layer protocols. What are they used for?
+
+| Protocol | Use |
+|----------|-----|
+| DNS      |_______________________________________________________________________________________________________________________________________|
+| HTTP      |_______________________________________________________________________________________________________________________________________|
+| SSL/TLS      |_______________________________________________________________________________________________________________________________________|
+| IMAP/POP/SMTP      |_______________________________________________________________________________________________________________________________________|
+| FTP      |_______________________________________________________________________________________________________________________________________|
+| SOAP      |_______________________________________________________________________________________________________________________________________|
+| Telnet      |_______________________________________________________________________________________________________________________________________|
+| SSH     |_______________________________________________________________________________________________________________________________________|
+
+
+
+### What is a URL?
+Uniform Resource Locators (URLs) are a standardized format for describing the location and access method of resources via the internet
+
+![URL example](url.png)
+
+Define the term *cyberquatting*/ *domain squatting*.
+
+-
+
+
+### Domain Name System
+In which layer is the Domain Name System used? What are its basic functionalities?
+
+-
+
+What types of resource records does DNS store? 
+
+-
+
+
+### Domains
+
+- Domain name:
+    - Two or more labels, separated by dots (e.g. inf.ed.ac.uk)
+
+- Top-level domain (**TLD**)
+    - Generic (**gTLD**), e.g. .com, .org
+    - Country-code (**ccTLD**), e.g. .ca, .it
+    - New top level domains, e.g. .scot
+
+![DNS Tree](dns_tree.png)
+
+### Name Servers
+What is a name server? What are its main functions?
+
+- 
+
+What is a authoritative name server?
+
+-
+
+What is a root name server?
+
+-
+
+Explain the different parts of a DNS packet,
+| Name | Explanation |
+|------|-------------|
+|header|________________________________________________________________________________________________|
+| query part | ________________________________________________________________________________________________|
+| answer part | ________________________________________________________________________________________________|
+### Name Resolution
+What is name resolution? What types of resolution are there?
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+-
+
+![Iterative Name Resolution](iterative_ns.png)
+![Recursive Name Resolution](recursive_ns.png)
+
+### Glue Records
+Circular References: The authoritative name server for a domain may be within the same domain (e.g. dns0.inf.ed.ac.uk is authoritative within inf.ed.ac.uk)
+
+What is a glue record? Why are they useful?
+
+- 
+
+### DNS Caching
+There would be too much network traffic if a path in the DNS tree would be traversed for each query: *Root servers and TLD servers would be rapidly overloaded*. 
+To solve this, DNS servers *cache* records that are results of queries for a specified amount of time (**Time-to-live field**)
+
+How do DNS queries work with caching?
+
+1.
+
+2.
+
+What are glue records? What problem do they solve?
+
+-
+
+![Iterative Name Resolution with Caching](it_cache.png)
+![Recursive Name Resolution with Caching](re_ns.png)
+
+### Local DNS Cache
+The OS maintains a DNS cache.
+    - shared among all running applications
+    - Can be displayed to all users
+
+What privacy issues does this cause?
+
+-
+
+**Note: private/incognito browsing does not clear DNS cache**
+
+### DNS Cache Poisoning
+What is the basic idea behind DNS Cache Poisoning?
+
+-
+
+How do DNS queries work? How does this facilitate DNS Cache Poisoning?
+
+-
+
+In which situations can the DNS cache be poisoned?
+
+-
+
+What are some of the defenses against DNS Cache Poisoning?
+
+-
+
+Explain the steps involved in DNS cache poisoning.
+
+1.
+
+2.
+
+3.
+
+![DNS Cache Poisoning](dnscachepoisoning.png)
+### Subdomain DNS Cache Poisoning (Kaminsky)
+How do subdomain DNS cache poisonings work?
+
+### Pharming
+What is pharming? 
+
+-
+
+Name and explain two pharming attacks.
+
+1.
+
+2.
+
+## Network Security: Firewalls
+
+### Firewalls
+What is a firewall?
+
+-
+
+What is a firewall policy?
+
+-
+
+**Demilitarized Zone**: Other can connect to this part (e.g. email server)
