@@ -681,10 +681,137 @@ Name and explain two pharming attacks.
 ### Firewalls
 What is a firewall?
 
--
+- Prevent malicious actions from the internet as well as the local network
 
 What is a firewall policy?
 
 -
 
-**Demilitarized Zone**: Other can connect to this part (e.g. email server)
+![Firwall](firewall.png)
+
+**Demilitarized Zone**: Portion of the network to which others can connect to this part (e.g. email server) from the internet
+
+![Firewall Functioning](firewall_example.png)
+
+Example of fireall policies:
+
+![Firewall Policies](firewallpolicy.png)
+
+What is a blocklist? What is a allowlist?
+
+- **Blocklist**:
+
+- **Allowlist**:
+
+Explain the different types of firewalls:
+
+- **Packet filters (stateless)**:
+
+    - How does it work?
+
+        -
+
+    - Three-way-handshake:
+
+        1.
+        2.
+        3.
+
+    - Disadvantage of packet filtering firewalls:
+
+        -
+
+
+- **Stateful filters**:
+
+    - How does it work?
+
+        -
+
+    - Advantage of stateful firewalls:
+
+        -
+
+    - Three-way-handshake:
+
+        1.
+        2.
+        3.
+
+
+- **Application layer**:
+
+    - How does it work?
+
+        -
+
+    - Advantages:
+
+        -
+
+### Port Scanning
+- An attacker is looking for applications listening on ports
+- A single IP address is contacting many ports to see if any respond
+
+#### Defense
+- How can one protect themselves against port scanning?
+
+    -
+
+### Personal Firewalls
+- Works on the workstation that it protects (software)
+- Provides basic protection, especially for home or mobile devices
+- Any rootkit type software can disable the firewall
+
+### Firewalls Pros and Cons
+
+Advantages:
+
+- 
+
+- 
+
+Disadvantages:
+
+-
+
+-
+
+### Network Address Translation
+Why do we need NAT?
+- We are running out of IP addresses
+
+#### IPv4 and Address Space Exhaustion
+- Version 4 of the Internet Protocol
+    - of the form 192.168.2.6
+- There are less than 4.3 billion IPv4 addresses available
+- We do not have enough addresses for every device on the planet
+
+- Answer: **Network Address Translation**
+    - Internal IP different than external IP
+    - Border router maps between its own IP and the internal ones
+- Alternative answer: **IPv6**?
+
+### Intrusion Detection Systems
+#### Firewalls are preventative, IDS detects a potential incident in progress
+- At some point you have to let some traffic into and out of your network (otherwise user get upset)
+- Most security incidents are caused by a user letting something into the network that is malicious, or by being an insider threat themselves.
+- These cannot be prevented or anticipated in advance.
+- The next step is to identify that something bad is happening quickly so you can address it
+
+#### Rule-Based Intrusion Detection
+- Rules identify the types of actions thar match certain known intrusion attack. Rule encode a **signature** for such an attack
+- Requires that admin anticipate attack patterns in advance
+- Attack may test attack on common signatures
+- Impossible to detect a new type of attack
+- High accuracy, low false positives
+
+#### Statistical Intrusion Detection
+- Dynamically build a statistical model of acceptable or "normal" behavior and flag anything that does not match
+- Admin does not need to anticipate potential attacks
+- System needs time to warm up to new behavior and to detect behavior
+- Can detect new types of attacks
+- Higher false positives, lower accuracy
+- Must keep up with what "normal" looks like: this can change
+
+#### Base-Rate Fallacy
