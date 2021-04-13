@@ -753,6 +753,27 @@ Explain the different types of firewalls:
 - An attacker is looking for applications listening on ports
 - A single IP address is contacting many ports to see if any respond
 
+What is **port scanning**?
+
+-
+
+Explain the following types of port scanning.
+
+- **TCP Scans**:
+
+- **SYN Scans**:
+
+- **Idle Scanning**:
+
+![Idle Scan Workflow](idle_scan.png
+)
+
+How do **UDP scans** normally work? What is an issue for **UDP scans**?
+
+-
+
+-
+
 #### Defense
 - How can one protect themselves against port scanning?
 
@@ -799,12 +820,28 @@ Why do we need NAT?
 - These cannot be prevented or anticipated in advance.
 - The next step is to identify that something bad is happening quickly so you can address it
 
+What is an **intrusion-detection** system?
+
+-
+
+Explain the different threats an IDS is designed to detect.
+
+- **Masquerader**:
+
+- **Misfeasor**:
+
+- **Clandestine user**:
+
 #### Rule-Based Intrusion Detection
-- Rules identify the types of actions thar match certain known intrusion attack. Rule encode a **signature** for such an attack
+- Rules identify the types of actions thar match certain known intrusion attack. Rule encodes a **signature** for such an attack
 - Requires that admin anticipate attack patterns in advance
 - Attack may test attack on common signatures
 - Impossible to detect a new type of attack
 - High accuracy, low false positives
+
+What is a disadvantage of rule-based intrusion detection?
+
+-
 
 #### Statistical Intrusion Detection
 - Dynamically build a statistical model of acceptable or "normal" behavior and flag anything that does not match
@@ -814,4 +851,19 @@ Why do we need NAT?
 - Higher false positives, lower accuracy
 - Must keep up with what "normal" looks like: this can change
 
+Advantages:
+
+- 
+
+-
+
+Disadvantages:
+
+-
+
+-
+
+-
+
 #### Base-Rate Fallacy
+Explain the **base-rate fallacy**:
